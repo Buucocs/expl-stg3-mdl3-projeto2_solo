@@ -1,0 +1,265 @@
+:root{
+  --ff-heading: 'Staatliches', sans-serif;
+  --ff-texting: 'Palanquin', sans-serif;
+
+  font-size: 62.5%;
+  --fs-header: 4rem;
+  --fs-texting: clamp(1rem, 1rem + 1vw, 2rem);
+
+  --bg-heading-primary: hsla(218, 17%, 62%, 1);
+  --bg-heading-secondary: hsla(275, 18%, 79%, 1);
+  --fc-heading: hsla(0, 0%, 100%, 1);
+  --bg-page: hsla(233, 100%, 97%, 1);
+  --fc-texting: hsla(274, 84%, 12%, 1);
+  --bg-buttons: hsla(312, 91%, 96%, 1);
+  --fc-buttons: hsla(232, 17%, 35%, 1);
+
+  --ls-heading: 0.05rem;
+  --ls-buttons: 0.05rem;
+
+  --gap-cards:3.2rem;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-width: 250px;
+  margin: 0 auto;
+}
+
+header{
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-heading-primary);
+  align-items: center;
+  width: 100%;
+
+  animation: topdown 1200ms 300ms backwards;
+}
+
+header a img{
+  width: 14rem;
+  margin: 3.2rem auto;
+}
+
+header h1{
+  font-size: var(--fs-header);
+  font-family: var(--ff-heading);
+  letter-spacing: var(--ls-heading);
+  color: var(--fc-heading);
+  background: var(--bg-heading-secondary);
+  width: 100%;
+  text-align: center;
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+header p{
+  width: 90%;
+  margin: 1.4rem auto clamp(1rem, 1rem + 5vw, 3rem);
+  font-family: var(--ff-texting);
+  font-size: var(--fs-texting);
+  color: var(--fc-texting);
+  line-height: 2rem;
+  text-align: center;
+}
+
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(2rem, 2rem + 5vw, 4rem) 32px;
+  width: 100%;
+  background: var(--bg-page);
+
+  animation: downtop 1200ms 300ms backwards;
+}
+
+#card-wrapper{
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--gap-cards);
+  width: 100%;
+  padding-bottom: 6rem;
+}
+
+#column-A, #column-B, #column-C{
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-cards);
+}
+
+#column-C{
+  display: none;
+}
+
+.card{
+  position: relative;
+}
+
+.card h2{
+  background: var(--bg-buttons);
+  color: var(--fc-buttons);
+  font-size: var(--fs-texting);
+  font-family: var(--ff-texting);
+  letter-spacing: var(--ls-buttons);
+  position: absolute;
+  right: clamp(0.5rem, 1rem + 1vw, 1.6rem);
+  top: clamp(0.5rem, 1rem + 1vw, 1.6rem);
+  padding: 0 clamp(0.5rem, 1rem + 2vw, 2rem);
+  border-radius: 2rem;
+
+  animation: leftright 1200ms 300ms backwards;
+}
+
+.card img{
+  width: 100%;
+}
+
+footer{
+  display: none;
+}
+
+@keyframes topdown{
+  0%{
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes downtop{
+  0%{
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes leftright{
+  0%{
+    opacity: 0;
+    transform: translateX(25px);
+  }
+
+  100%{
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (min-width: 400px){
+.page{
+   width: 85%;
+   max-width: 500px;
+   min-width: 400px;
+  }
+}
+
+@media (min-width: 700px){
+  .page{
+    width: 72%;
+    max-width: 700px;
+    min-width: 500px;
+   }
+}
+
+@media (min-width: 1280px){
+  .page{
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    width: 1280px;
+    height: 720px;
+    max-width: 1280px;
+    min-width: 1280px;
+    padding: 0px;
+
+  }
+
+  header{
+    width: 380px;
+    height: 720px;
+  }
+
+  header p{
+    margin-top: 3rem;
+  }
+
+  main{
+    padding: 0;
+    margin: 0;
+    width: auto;
+    width: 900px;
+    height: 720px;
+  }
+
+  #card-wrapper{
+    padding: 40px 60px 30px;
+    margin: 0;
+
+    display: grid;
+    grid-template-areas: "A B C";
+    align-items: center;
+  }
+
+  main #card-wrapper #column-A{
+    grid-area: A;
+  }
+
+  main #card-wrapper #column-B{
+    grid-area: B;
+  }
+
+  main #card-wrapper #column-C{
+    display: flex;
+    grid-area: C;
+  }
+
+  footer{
+    display: inline-block;
+    font-size: var(--fs-texting);
+    font-family: var(--ff-texting);
+    color: var(--fc-texting);
+    margin-top: 3rem;
+  }
+
+  footer a{
+    color: var(--fc-texting);
+    text-decoration: none;
+    opacity: 0.5;
+  }
+
+  footer a:hover{
+    opacity: 1;
+  }
+
+  header a img:hover, .card h2:hover{
+    scale: 1.1;
+    transition: 500ms;
+  }
+
+  .card h2{
+    z-index: 1;
+  }
+
+  .card img:hover{
+    scale: 1.05;
+    transition: 500ms;
+  }
+}
